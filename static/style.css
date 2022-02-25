@@ -1,0 +1,25 @@
+/*For all page backgrounds */
+body {
+	font-family: exo;
+	background-color: mediumseagreen;
+  	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;
+  	background-size: cover;
+}
+
+.btn-primary {
+	width:  100%;
+}
+
+/* For the Page Header above the navigation bar */
+.header {
+  text-align: center;
+  font-weight: bold;
+  font-size: 50px;
+}
+
+/* For the large heading's font-size */
+h1 {
+	font-size: 45px;
+}

@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block title %}Toggle{% endblock %}
+
+{% block body %}
+
+<div class="header" style="color:#231814">
+	<h1>Calgary Traffic Incidents Map</h1>
+</div>
+
+
+<!-- Map initialization and loading/toggle -->
+<div id="map">
+	<script>
+
+      	// load a tile layer1 -- basemap //
+      	var layer1 = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+      	attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+      	maxZoom: 18,
+      	id: 'mapbox/streets-v11',
+      	tileSize: 512,
+      	zoomOffset: -1,
+      	accessToken: 'sk.eyJ1Ijoic2FuZHN0b3JtMTYiLCJhIjoiY2t6eGY4cGd0MDB4aTJ1cWZ6b3VpMzB0dyJ9.3qQy_YGllZoRb4VtuI_9-g'
+      	});
+
+      	// load tile layer2 -- designer map //
+      	var layer2 = L.tileLayer('https://api.mapbox.com/styles/v1/sandstorm16/cl01z83n600lz15r4kh4lsqkr/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+      	attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+      	maxZoom: 18,
+      	tileSize: 512,
+      	zoomOffset: -1,
+      	accessToken: 'pk.eyJ1Ijoic2FuZHN0b3JtMTYiLCJhIjoiY2t6eGV6aDhiMDBuMTJ3bXdsajBxeTN2dCJ9.xWc7boyMLBJbwdLQfElSnA'
+      	});
+
+      	// initialize map //
+		var map = L.map('map', {
+			center: [51.03, -114.06],
+			zoom: 11,
+			layers: [layer1, layer2]
+		});
+
+      	// toggle maps //
+      	var toggleLayers = {
+      		"Basemap": layer1,
+      		"Traffic Incidents Map": layer2
+      	};
+      	L.control.layers(toggleLayers).addTo(map);
+
+
+	</script>
+</div>
+
+{% endblock %}
